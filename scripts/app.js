@@ -15,6 +15,7 @@ function readContent() {
     loadTask();
     //displayTask(taskToSave);
 }
+
 function saveTask(task) {
     $.ajax({
         type: "POST",
@@ -30,11 +31,15 @@ function saveTask(task) {
         }
         // instead of sending the task from the form, i want to get it from the server
     });
+
+    loadTask()
 }
 
 
 
 function displayTask(task) {
+    console.log("displayTask... ", task);
+    
     // Use template literals to create the layout
     let html = `
         <div class="task">
@@ -62,7 +67,9 @@ function loadTask() {
             $(".pending-task").empty();
             for(let i = 0;i < list.length;i++)
             {
-                if(list[i].name === "adrian"){
+                console.log("task..", list[i].name);
+                
+                if(list[i].name === "ashton"){
                     displayTask(list[i])
                 }
             }
